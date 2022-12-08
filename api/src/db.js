@@ -30,8 +30,10 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Pokemon } = sequelize.models;
+const { Activity, Country} = sequelize.models;
 
+Country.belongsToMany(Activity, { through: "countries_activity" });
+Activity.belongsToMany(Country, { through: "countries_activity" });
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
@@ -39,3 +41,5 @@ module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };
+
+// La relación entre ambas entidades debe ser de muchos a muchos ya que un país puede contener varias actividades turísticas y, a su vez, una actividad turística puede darse en múltiples países. Por ejemplo una actividad podría ser "Ski" que podría ocurrir en Argentina y también en Estados Unidos, pero a su vez Argentina podría también incluir "Rafting".

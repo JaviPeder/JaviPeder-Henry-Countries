@@ -1,6 +1,6 @@
 const { Country, conn } = require('../../src/db.js');
-const { expect } = require('chai');
-
+// const { expect } = require('chai');
+// const { getAllCountries } = '../../src/controllers/AllCountries.js'
 describe('Country model', () => {
   before(() => conn.authenticate()
     .catch((err) => {
@@ -15,8 +15,15 @@ describe('Country model', () => {
           .catch(() => done());
       });
       it('should work when its a valid name', () => {
-        Country.create({ name: 'Argentina' });
+        Country.create({ name: 'Argentina'});
       });
     });
+
+   
+
+
+
+
   });
+
 });

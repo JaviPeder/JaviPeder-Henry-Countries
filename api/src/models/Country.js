@@ -37,14 +37,14 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    createdInDb:{
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true
-    }
+    // createdInDb: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   defaultValue: true
+    // }
   });
 };
-// ID (Código de 3 letras) * STRING 
+// ID (Código de 3 letras) * STRING
 // https://es.wikipedia.org/wiki/ISO_3166-1_alfa-3
 
 // Nombre *   STRING

@@ -1,20 +1,28 @@
 const { Sequelize } = require("sequelize");
 const { Country, Activity } = require("../db");
 
-const CountryById = async function (req, res) {
-  try {
-    const CountryId = req.params.idPais.toUpperCase();
+const CountryById = async function (countryId) {
+    // const CountryId = req.params.idPais.toUpperCase();
     // console.log(idpais)
+    if(countryId === null){
+      throw new Error('Debe ingresar un id')
+    }
+    if(countryId.length > 3){
+      // console.log(countryId.length)
+      throw new Error('Debe ingresar un valor de tres letras')
+    }
     const findCountry = await Country.findOne({
       where: {
-        id: CountryId,
+        id: countryId,
       },
       include: Activity,
     });
-    return res.send(findCountry);
-  } catch (error) {
-    res.send(error);
-  }
+    if(findCountry){
+       return findCountry;
+    }else{
+      throw new Error(`El país con el id ${countryId} no existe en la base de datos`)
+    }
+ 
 }
 
 module.exports = { CountryById };

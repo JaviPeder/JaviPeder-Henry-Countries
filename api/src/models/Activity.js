@@ -17,11 +17,10 @@ module.exports = (sequelize) => {
             allowNull: false,
         }, //array
         season: {
-
             type: DataTypes.ENUM("summer", "autumn", "winter", "spring"),
             allowNull: false,
         }
-    });
+    },{timestamps:false});
 };
 
 // Actividad Turística con las siguientes propiedades:

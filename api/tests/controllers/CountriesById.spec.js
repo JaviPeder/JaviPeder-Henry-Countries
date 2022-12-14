@@ -6,7 +6,7 @@ const  { CountryById }  = require ('../../src/controllers/CountryById.js')
 chai.use(chaiAsPromised);
 
 describe('Controllers_ById', () => {
-    beforeEach(async () => await load);
+    // beforeEach(async () => await load);
     describe('countries_name', () => {
         it('should work when its a valid id', async () => {
             const result = await CountryById('ARG');

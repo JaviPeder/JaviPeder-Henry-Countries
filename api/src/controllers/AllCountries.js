@@ -1,13 +1,11 @@
 const { Sequelize } = require("sequelize");
-const Op = Sequelize.Op;
+// const Op = Sequelize.Op;
 const { Country, Activity } = require("../db");
 
 const getAllCountries = async function (name) {
 
-    const countryAll = await Country.findAll({ include: Activity });
-    // Traigo toda la informacion incluida la actividad
-    if (!name) {
-        //si no tiene name por query que devuelva todo   
+    const countryAll = await Country.findAll({ include: Activity });// Traigo toda la informacion incluida la actividad
+    if (!name) {  //si no tiene name por query que devuelva todo   
         return countryAll;
     } else {
         // Si tiene name que filtre los datos 
@@ -20,6 +18,7 @@ const getAllCountries = async function (name) {
             // si esta el pais que devuelva la coincidencia
             return searchCountry;
         }
+        // preguntar a Chris 
         //     {
         //     const searchCountry = await Country.findAll({
         //       where: {
@@ -32,7 +31,6 @@ const getAllCountries = async function (name) {
 
         //     if (!searchCountry[0]) {
         //       console.log("error");
-
         //       return res
         //         .status(404)
         //         .json({

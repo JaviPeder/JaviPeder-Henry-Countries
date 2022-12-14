@@ -2,7 +2,6 @@ const { Sequelize } = require("sequelize");
 const { Country, Activity } = require("../db");
 
 const CountryById = async function (countryId) {
-    // const CountryId = req.params.idPais.toUpperCase();
     // console.log(idpais)
     if(countryId === null){
       throw new Error('Debe ingresar un id')

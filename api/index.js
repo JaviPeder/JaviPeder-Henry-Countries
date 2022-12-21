@@ -23,8 +23,7 @@ const {LoadingDb} = require('./src/DbLoad.js')
 // Syncing all the models at once.
 const load = conn.sync({ force: false }).then(() => {
   server.listen(3001, () => {
-
-    LoadingDb();
+    // LoadingDb();
     // Linea comentada para que no cargue nuevamente la base de datos
 
     console.log('%s listening at 3001'); // eslint-disable-line no-console

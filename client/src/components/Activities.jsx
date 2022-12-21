@@ -2,7 +2,7 @@ import React from "react";
 // import style from "./country.module.css"
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getActivities } from "../actions/index.js";
+import { getActivities, deleteActivity } from "../actions/index.js";
 import { useDispatch, useSelector} from "react-redux";
 
 export default function Activity () {
@@ -34,7 +34,7 @@ export default function Activity () {
                             <h2>{activ.season}</h2>
                             <h2>{activ.countries?.map(c=>
                                 <h3>{c.name}</h3>)}</h2>   
-
+                    <button id= 'deleteActiv' onClick={deleteActivity()} className=''>X</button>
                         </div>
                             
                         ))

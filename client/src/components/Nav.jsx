@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// // import style from "../Nav/navBar.module.css";
+import s from "./css/nav.module.css";
 import { connect, useDispatch } from "react-redux";
 import {
   getCountries, orderAlpha, orderCont, orderAlphaRev, orderPop, orderPopRev } from "../actions/index.js";
 import SearchBar from "./SearchBar.jsx";
 import SearchActivity from "./SearchActivity";
-
+import img from "../img/Mundo_hecho_de_Banderas.gif"
 const NavBar = ({
   orderAlpha, getCountries, orderAlphaRev, orderCont, showActiv, orderPop, orderPopRev
 }) => {
@@ -53,58 +53,50 @@ const NavBar = ({
   // };
 
   return (
-    <div className=''>
-      <Link to="/" className=''>
-        <p>Welcome LOGO</p>
+    <div className={s.total}>
+      <Link to="/" className={s.logo}>
+        <p>World-Scanner</p>
+        <img className={s.img} src={img} alt="" />
       </Link>
-      <div className=''>
-        <p>Sort by</p>
-        <select onChange={(event) => setSort(event.target.value)}>
-          <option value="all">-</option>
-          <option value="a-z">A-Z</option>
-          <option value="z-a">Z-A</option>
-          <option value="incremenetpopulation">🡅 population</option>
-          <option value="decrementpopulation">🡇 population</option>
-        </select>
-        <SearchBar />
-      </div>
-      <div className=''>
-        <p>Filter by Continent</p>
-
-        <div className='SelectRegion'>
-          <select onChange={(event) => setRegion(event.target.value)}>
-            <option value="all">All</option>
-            <option value="Americas">Americas</option>
-            <option value="Europe">Europe</option>
-            <option value="Africa">Africa</option>
-            <option value="Oceania">Oceania</option>
-            <option value="Asia">Asia</option>
+      <SearchBar />
+      <SearchActivity />
+      <div className={s.sort_filter}>
+        <div className={s.select}>
+          <p>Sort by</p>
+          <select  onChange={(event) => setSort(event.target.value)}>
+            <option value="all">-</option>
+            <option value="a-z">A-Z</option>
+            <option value="z-a">Z-A</option>
+            <option value="incremenetpopulation">🡅 population</option>
+            <option value="decrementpopulation">🡇 population</option>
           </select>
         </div>
-      </div>
-      <SearchActivity />
+        <div >
+          <div className={s.select}>
+          <p>Filter by Continent</p>
+            <select  onChange={(event) => setRegion(event.target.value)}>
+              <option value="all">All</option>
+              <option value="Americas">Americas</option>
+              <option value="Europe">Europe</option>
+              <option value="Africa">Africa</option>
+              <option value="Oceania">Oceania</option>
+              <option value="Asia">Asia</option>
+            </select>
+          </div>
+        </div>
+        <div>
 
-      <h2>Resultado del Filtro </h2>
-      {/* <div className=''>
-        <label>Activity</label>
-        <form>
-          <input
-            className=''
-            placeholder="Search your activity."
-            type="text"
-            autocomplete="off"
-            value={activity}
-            onChange={activityHandler}
-          />
-          <button className='' onClick={searchActHandler}>
-            Search
-          </button>
-        </form>
-      </div> */}
-
-      <Link to="/activities" className=''>
-        <p className=''>Create and view all activities</p>
+        </div>
+        <div className={s.borderactiv}>
+          <Link to="/activities" className={s.activities}>
+        <p >Create and view all activities</p>
       </Link>
+        </div>
+      
+      </div>
+      {/* <h5>Filtered: {state.countries.length}</h5>  */}
+
+     
     </div>
   );
 };
@@ -127,3 +119,27 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+
+
+
+
+
+
+
+//mover a componente nuevo
+ {/* <div className=''>
+        <label>Activity</label>
+        <form>
+          <input
+            className=''
+            placeholder="Search your activity."
+            type="text"
+            autocomplete="off"
+            value={activity}
+            onChange={activityHandler}
+          />
+          <button className='' onClick={searchActHandler}>
+            Search
+          </button>
+        </form>
+      </div> */}

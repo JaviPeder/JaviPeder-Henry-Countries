@@ -1,8 +1,8 @@
 const { Country, Activity } = require("../db");
 
-const newActivity = async function (name, difficulty, duration, season, countryID) {
+const newActivity = async function (name, difficulty, duration, season, countryID, description) {
   //Busco la actividad por name para saber si existe
-  if (!name || !difficulty || !duration || !season || !countryID) {
+  if (!name || !difficulty || !duration || !season || !countryID || !description) {
     throw new Error('Debe completar todos los campos requeridos')
   }
   const searchActivity = await Activity.findOne({
@@ -10,11 +10,12 @@ const newActivity = async function (name, difficulty, duration, season, countryI
       name: name,
     },
   });
-  console.log(searchActivity)
+  // console.log(searchActivity)
   // busco el pais que coincida con id
+
   const countryMatch = await Country.findAll({
     where: {
-      id: countryID.toUpperCase(),
+      id: countryID,
     },
   });
   if (countryMatch.length === 0) {
@@ -27,6 +28,7 @@ const newActivity = async function (name, difficulty, duration, season, countryI
       difficulty: difficulty,
       duration: duration,
       season: season,
+      description: description
     });
     //agrego la actividad al pais
     // const NewActivityAdd = 

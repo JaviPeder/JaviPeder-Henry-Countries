@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import style from "./searchBar.module.css";
+import s from "./css/searchbar.module.css";
 import { getCountries, getByName } from "../actions";
 
 export default function SearchBar() {
@@ -15,24 +15,24 @@ export default function SearchBar() {
 // refrescar la pagina
 
   return (
-    <div className=''>
+    <div className={s.container}>
         {/* formulario para buscar por nombre */}
-        <form className='' onSubmit={(e) => {
+        <form className={s.form} onSubmit={(e) => {
                 e.preventDefault();
                 dispatch(getByName(input));
                 setInput('');
     }}
     >
      <input
-        className=''
+        className={s.input}
         type="text"
         placeholder="Search country by name"
         value={input}
         onChange={e => setInput(e.target.value)}
       />
-      <input className='' type="submit" value= 'Search' />
+      <input className={s.btn} type="submit" value= 'Search' />
     </form> 
-        <button className='' onClick={() => homeHandler()}>
+        <button className={s.btnreset} onClick={() => homeHandler()}>
           Reset
         </button>
 

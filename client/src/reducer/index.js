@@ -82,6 +82,18 @@ const initialState = {
             activities: action.payload,
         }
       }
+
+    case "POST_ATIVITY":{
+        return{
+            ...state
+        }
+    }
+
+    case "DELETE_ACTIV_BY_NAME":{
+        return{
+            ...state
+        }
+    }
       default:
         return state;
     }  

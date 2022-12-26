@@ -1,0 +1,38 @@
+.contenedor{
+    font-size: 18px;
+    display: inline-flex;
+    font-family: 'Roboto Slab', serif;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.btn {
+    text-decoration: none;
+    color: #4895D9;
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    border: none;
+    display: inline flex;
+    height: 41px;
+    width: 130PX;
+    font-size: 18px;
+    /* margin: 30px; */
+    border-radius: 0px 5px 5px 0px;
+}
+
+.btn:hover {
+    background-color: #9d9b9b;
+    color: white;
+    transition: 0, 5s;
+    }
+    .input{
+        text-decoration: none;
+        font-size: 18px;
+        display: inline flex;
+        height: 40px;
+        width: 230PX;
+        border-radius: 5px 0px 0px 5px;
+        margin-left: 100px;
+        border: none;
+    }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import style from "./searchBar.module.css";
+import s from "./css/searchactivity.module.css";
 import { getCountries, showActiv} from "../actions";
 
 export default function SearchActivity() {
@@ -21,24 +21,25 @@ const activityHandler = (e) => {
     setTimeout(() => {
       dispatch(showActiv(activity));
     }, 200);
-
     // console.log(activity);
     setActivity("");
   };
   return (
-    <div className=''>
-    <label>Activity</label>
+    <div className={s.contenedor}>
+    <br />
+    <label>Search by activity</label>
+    
     <form>
       <input
-        className=''
+        className={s.input}
         placeholder="Search your activity"
         type="text"
         autocomplete="off"
         value={activity}
         onChange={activityHandler}
       />
-      <button className='' onClick={searchActHandler}>
-        Search
+      <button className={s.btn} onClick={searchActHandler}>
+        search
       </button>
     </form>
   </div>

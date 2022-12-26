@@ -15,7 +15,7 @@ const [countriesPerPage, setcountriesPerPage] = useState(9);
 //0      9
 //9 ---- 18
 const lastPosition = currentPage * countriesPerPage;
-const firstPosition = lastPosition - countriesPerPage; 
+const firstPosition = lastPosition - countriesPerPage;
 // sin modif      lo que debo lograr
 // 0-9
 // 9-18           9-19             pag1

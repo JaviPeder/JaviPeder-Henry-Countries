@@ -4,10 +4,9 @@ import { useDispatch} from "react-redux";
 // import { Link } from "react-router-dom";
 import AllCountries from "./AllCountries.jsx";
 import Nav from "./Nav.jsx";
-
+import s from "./css/home.module.css"
 
 export default function Home() {
-    // Hooks
   const dispatch = useDispatch();
 //   const allCountries = useSelector((state)=> state.countries)
 
@@ -15,11 +14,10 @@ export default function Home() {
     dispatch(getCountries());
   }, [dispatch]);
 
-
     return (
-        <div>
+        <div className={s.homeall}>
             <Nav />
-            <div>
+            <div className={s.countriesall}>
                 <AllCountries />
             </div>
         </div>

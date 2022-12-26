@@ -65,7 +65,7 @@ export function orderAlpha() {
       payload,
     };
   };
-  
+
 //Me traigo las actividades de DB
   export function getActivities() {
     return async (dispatch) => {
@@ -79,11 +79,24 @@ export function orderAlpha() {
     return async (dispatch) => {
         try {
           const res = await axios.delete(
-            `http://localhost:3001/activities`
-          );
-          dispatch({ type: "DELETE_ACTIV_BY_NAME", payload: res.data });
+            `http://localhost:3001/activities/`+name);
+            // dispatch({ type: "DELETE_ACTIV_BY_NAME", payload: res.data });
+            console.log(res)
+          // dispatch(res.message);
       } catch (error) {
         console.log(error);
       }
     };
+  }
+
+  export function postActivity(payload){
+    return async(dispatch) =>{
+      try {
+        const response = await axios.post(`http://localhost:3001/activities`,payload);
+        console.log(response)
+        
+      } catch (error) {
+        console.log(error)
+      }
+    }
   }

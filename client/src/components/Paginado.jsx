@@ -6,6 +6,8 @@ export default function Paginado({ countriesPerPage, countries, paginado }) {
     for (let i = 0; i < Math.ceil(((countries-countriesPerPage) / (countriesPerPage+1))+1); i++) {
         pageNumbers.push(i+1)
         // creo la numeracion del paginado
+
+        // ((250-9)/10)+1
     }
     return (
         <nav>

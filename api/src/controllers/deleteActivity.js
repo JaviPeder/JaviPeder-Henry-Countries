@@ -1,6 +1,6 @@
-const { Country, Activity } = require("../db");
+const { Activity } = require("../db");
 
-const deleteActivity = async function (name, countryID) {
+const deleteActivity = async function (name) {
     //Busco la actividad por name para saber si existe
     if (!name) {
         throw new Error('Debe seleccionar una actividad a eliminar')
@@ -17,7 +17,7 @@ const deleteActivity = async function (name, countryID) {
     //         id: countryID.toUpperCase(),
     //     },
     // });
-    console.log(countryID)
+    // console.log(countryID)
 
     if (!searchActivity) {
         throw new Error(`No se encuentra la actividad ${name} para eliminar`)

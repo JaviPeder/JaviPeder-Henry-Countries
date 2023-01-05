@@ -12,7 +12,6 @@ const newActivity = async function (name, difficulty, duration, season, countryI
   });
   // console.log(searchActivity)
   // busco el pais que coincida con id
-
   const countryMatch = await Country.findAll({
     where: {
       id: countryID,

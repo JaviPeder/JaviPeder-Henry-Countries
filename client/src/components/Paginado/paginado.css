@@ -1,0 +1,31 @@
+.paginado {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.numberPage {
+    display: flex;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.paginado p {
+    display: block;
+    padding: 10px 10px;
+    color: white;
+    background: #72a6ea;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.2s;
+    width: 15px;
+}
+
+.paginado p:hover {
+    background: #073672;
+}
+
+/* .paginado .active{
+    background: #724207;
+ } */

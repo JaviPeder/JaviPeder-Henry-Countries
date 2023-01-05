@@ -17,13 +17,17 @@ export function getCountry(id) {
 
   export function getByName(name) {
     return async (dispatch) => {
+       
       try {
-        const res = await axios.get(
+       const res = await axios.get(
           `http://localhost:3001/countries?name=${name}`
         );
+        console.log(res.data)
         dispatch({ type: "GET_BY_NAME", payload: res.data });
+        
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
+      // console.log(error);
     }
   };
 }
@@ -59,9 +63,9 @@ export function orderAlpha() {
     };
   };
   //BUSCO ACTIVIDADES EN LOS PAISES
-  export const showActiv = (payload) => {
+  export const FilterByActiv = (payload) => {
     return {
-      type: "SHOW_ACTIV",
+      type: "FILTER_BY_ACTIV",
       payload,
     };
   };

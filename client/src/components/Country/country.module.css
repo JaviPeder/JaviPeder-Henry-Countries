@@ -1,0 +1,30 @@
+.container {    
+    text-decoration: none;
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    margin-left: 5%;
+    align-content: center;
+    padding: 20px;
+    justify-content: space-around;
+    font-family: 'Roboto Slab', serif;
+    color: #3c92dd;
+}
+
+.name {
+    text-decoration: none;
+    margin-bottom: 0px;
+    font-size: 25px;
+    color: #194d7a;
+    size-adjust: auto;
+    font-family: 'Noto Serif Thai', serif;
+}
+
+.flag {
+    max-width: 200px;
+    width: 200px;
+    height: 125px;
+    display: flex;
+    align-items: center;
+}

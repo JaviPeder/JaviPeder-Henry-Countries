@@ -18,27 +18,7 @@ const getAllCountries = async function (name) {
             // si esta el pais que devuelva la coincidencia
             return searchCountry;
         }
-        // preguntar a Chris 
-        //     {
-        //     const searchCountry = await Country.findAll({
-        //       where: {
-        //         name: {
-        //           [Op.iLike]: `%${name}%`
-        //         },
-        //       },
-        //        include: Activity
-        //     });
 
-        //     if (!searchCountry[0]) {
-        //       console.log("error");
-        //       return res
-        //         .status(404)
-        //         .json({
-        //           error: ` No se encuentro el País con el nombre  ${name}`,
-        //         });
-        //     }
-        //     return res.send(searchCountry);
-        //   }
     }
 }
 

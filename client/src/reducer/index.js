@@ -1,5 +1,6 @@
 const initialState = {
     countries: [],
+    allCountries: [],
     countryDetail: [],
     activities:[]
   };
@@ -22,6 +23,7 @@ const initialState = {
         return {
           ...state,
           countries: action.payload,
+          allCountries: action.payload
         };
       }
       case "GET_COUNTRY": {
@@ -31,48 +33,56 @@ const initialState = {
         };
       }
       case "GET_BY_NAME": {
+        
         return {
           ...state,
           countries: action.payload,
         };
       }
       case "ORD_ALPHA": {
+        const allcountriesalp =  state.allCountries
         return {
           ...state,
-          countries: state.countries.slice().sort(ordAlpha),
+          countries: allcountriesalp.slice().sort(ordAlpha),
         };
       }
   
       case "ORD_ALPHA_REV": {
+        const allcountriesalpr =  state.allCountries
         return {
           ...state,
-          countries: state.countries.slice().sort(ordAlpha).reverse(),
+          countries: allcountriesalpr.slice().sort(ordAlpha).reverse(),
         };
       }
   
       case "ORD_POPULATION": {
+        const allcountriespop =  state.allCountries
         return {
           ...state,
-          countries: state.countries.slice().sort(ordPop),
+          countries: allcountriespop.slice().sort(ordPop),
         };
       }
   
       case "ORD_POPULATION_REV": {
+        const allcountriespopu =  state.allCountries
         return {
           ...state,
-          countries: state.countries.slice().sort(ordPop).reverse(),
+          countries: allcountriespopu.slice().sort(ordPop).reverse(),
         };
       }
       case "FILTER_CONTINENT": {
+        const allcountries =  state.allCountries
+        
         return {
           ...state,
-          countries: state.countries.filter((c) => c.region === action.payload),
+          countries: allcountries.filter((c) => c.region === action.payload),
         };
       }
-      case "SHOW_ACTIV": {
+      case "FILTER_BY_ACTIV": {
+        const allcountriesactiv =  state.allCountries
         return{
           ...state,
-          countries: state.countries.filter((c)=>{ return c.activities.some((a)=> a.name === action.payload)   
+          countries: allcountriesactiv.filter((c)=>{ return c.activities.some((a)=> a.name === action.payload)   
           })
       }
       }
@@ -83,7 +93,7 @@ const initialState = {
         }
       }
 
-    case "POST_ATIVITY":{
+    case "POST_ACTIVITY":{
         return{
             ...state
         }

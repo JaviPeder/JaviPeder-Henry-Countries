@@ -40,3 +40,37 @@
     transform: rotate(360deg);
   }
 }
+
+#summer{
+  /* background-color: #17191a; */
+  background-image: url("./img/summer.png");
+  background-size: cover;
+  justify-content: center;
+  height:120px;
+  width: 120px;
+}
+
+#winter{
+  /* background-color: #17191a; */
+  background-image: url("./img/winter.png");
+  background-size: cover;
+  justify-content: center;
+  height:120px;
+  width: 120px;
+}
+#autumn{
+  /* background-color: #17191a; */
+  background-image: url("./img/autumn3.png");
+  background-size: cover;
+  justify-content: center;
+  height:120px;
+  width: 120px;
+}
+#spring{
+  /* background-color: #17191a; */
+  background-image: url("./img/spring.png");
+  background-size: cover;
+  justify-content: center;
+  height:120px;
+  width: 120px;
+}

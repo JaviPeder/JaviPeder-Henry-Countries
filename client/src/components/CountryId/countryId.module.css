@@ -1,0 +1,132 @@
+.todo{
+    background-image: url("../../img/mundo.jpg");
+    background-repeat:no-repeat;
+    width: 100%;
+    min-height:1080px;
+    background-size: 100%;
+}
+
+.container {
+    margin: 0%;
+    padding: 0%;
+    display: inline;
+    align-items: center;
+    text-align: center;
+    /* width: 200px; */
+    /* margin-left: 40px; */
+    align-content: center;
+    /* padding: 20px; */
+    justify-content: space-evenly;
+}
+.barra{
+    margin: 0px;
+    text-decoration: none;
+    background-color: #3BB2BF;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+}
+.logo{
+    text-decoration: none;
+    display: flex;
+    /* justify-content: space-around; */
+    color: white;
+    font-size: 30px;
+    font-family: 'Bebas Neue', cursive;
+    /* font-family: 'Big Shoulders Inline Display', cursive; */
+    font-family: 'Cinzel', serif;
+    /* font-family: 'Genos', sans-serif; */
+    /* font-family: 'Jura', sans-serif; */
+    /* font-family: 'Mukta', sans-serif; */
+    /* font-family: 'Noto Serif Thai', serif; */
+    /* font-family: 'Playfair Display', serif;  */
+    /* font-family: 'Roboto Slab', serif; */
+    /* font-family: 'Space Mono', monospace; */
+    /* font-family: 'Squada One', cursive; */
+}
+.logo p{
+    padding-top: 20px;
+        /* margin: 15px; */
+        margin-left: 80px;
+}
+.img{
+    padding-top: 40px;
+    width: 70px;
+    height: 70px;
+}
+.btnhome {
+    color: #4895D9;
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    border: none;
+    display: inline flex;
+    height: 40px;
+    width: 130PX;
+    font-size: 18px;
+    margin: 30px;
+    margin-left: -150px;
+    border-radius: 5px;
+    /* margin-top: -10px; */
+}
+.btnhome:hover{
+    background-color: #9d9b9b;
+    color: white;
+    transition: 0.3s;
+}
+
+.name {
+    margin-bottom: 0px;
+    font-size: 35px;
+    color: rgb(60, 60, 139);
+    margin: 30px;
+    font-family: 'Noto Serif Thai', serif;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Cinzel', serif;
+}
+
+.flag {
+    /* max-width: 200px; */
+    width: 500px;
+    height: auto;
+}
+
+.description{
+    display: flex;
+    font-size: 20px;
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+    justify-content: space-evenly;
+
+    /* margin-left: 350px; */
+}
+.description hr{
+   border: 0;
+border-top: 2px solid #4AB0D9; 
+border-bottom: 2px solid #4895D9;
+height:0;
+}
+.activitiestitle{
+    margin-top: -10px;
+    font-size: 25px;
+    color: #4895D9;
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.activities{
+    background-color: #4AB0D9;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 25px;
+    padding: 0px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    text-align: start;
+    color: #e2e1e1;
+    margin-bottom: 50px;
+}
+

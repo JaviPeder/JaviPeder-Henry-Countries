@@ -1,10 +1,9 @@
-// name, difficulty, duration, season, countryID, description
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { postActivity, getCountries } from "../../actions";
+import { updateActivity, getCountries, getActivities, selectActiv } from "../../actions";
 import NameFlag from "../Name_Flag/NameFlag ";
-import s from "./createactivity.module.css"
+import s from "./updateactivity.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRectangleXmark, faSquareCheck, faEarthAmericas } from '@fortawesome/free-solid-svg-icons'
 import img from "../../img/globe-24.webp"
@@ -49,28 +48,48 @@ const iconFail = <FontAwesomeIcon className={s.fail_icon} icon={faRectangleXmark
 const iconOk = <FontAwesomeIcon className={s.ok_icon} icon={faSquareCheck} />
 const iconEarth = <FontAwesomeIcon className={s.earth_icon} icon={faEarthAmericas} />
 
-export default function CreateActivity() {
+export default function UpdateActivity() {
+    const {id} = useParams()
     const dispatch = useDispatch();
     const countries = useSelector((state) => state.countries);
     const history = useHistory();
     const [errors, setErrors] = useState({})
     const [activeButton, setActiveButton] = useState(false)
-
+    const activities = useSelector((state) => state.allactivities);
+    const act = activities.filter(e=>e.id === parseInt(id))
+    console.log(act)
+    // console.log(typeof parseInt(id))
+    console.log(id)
+    // 
+    // console.log(activities)
+    // console.log(countries)
+    
+    // console.log(activities)
+    // console.log(activityselect[0].countries.map(e=>e.id))
+    useEffect(() => {
+        dispatch(getActivities());
+    }, [dispatch]);
+    useEffect(() => {
+            dispatch(selectActiv(id));
+        }, [id]);
     useEffect(() => {
         dispatch(getCountries());
     }, [dispatch]);
+    // console.log(activityselect[0].countries)
 
-
+    const activityselect = useSelector((state) => state.activSelect)
+    console.log(activityselect)
     const [input, setInput] = useState(
         {
-            name: "",
-            difficulty: "",
-            duration: "",
-            season: "",
-            countryID: [],
-            description: ""
+            name: activityselect.length? activityselect[0].name:"",
+            difficulty: activityselect.length? activityselect[0].difficulty:"",
+            duration: activityselect.length? activityselect[0].duration:"",
+            description: activityselect.length? activityselect[0].description:"",
+            season: activityselect.length? activityselect[0].season:"",
+            countryID: activityselect.length? activityselect[0].countries.map(e=>e.id):[]
         }
     )
+   
     function handleChange(e) {
         setInput({
             ...input,
@@ -85,31 +104,31 @@ export default function CreateActivity() {
     }
 
     function handleSelect(e) {
-    
-        if(e.target.value !=='null' && !input.countryID.includes(e.target.value)){
-        setInput({
-            ...input,
-            [e.target.name]: [...input.countryID, e.target.value]
-        })
-        setErrors(validate({
-            ...input,
-            [e.target.name]: e.target.value
-        }))
-        handleDisable()
+
+        if (e.target.value !== 'null' && !input.countryID.includes(e.target.value)) {
+            setInput({
+                ...input,
+                [e.target.name]: [...input.countryID, e.target.value]
+            })
+            setErrors(validate({
+                ...input,
+                [e.target.name]: e.target.value
+            }))
+            handleDisable()
+        }
     }
-}
 
     function handleDisable() {
-        if (Object.keys(errors).length !== 0 ) {
+        if (Object.keys(errors).length !== 0) {
             setActiveButton(false)
         } else { setActiveButton(true) }
     }
 
-
+    console.log(input)
     function handleSubmit(e) {
         e.preventDefault();
         // console.log(input)
-        dispatch(postActivity(input))
+        dispatch(updateActivity(id,input))
         setInput({
             name: "",
             difficulty: "",
@@ -118,10 +137,10 @@ export default function CreateActivity() {
             countryID: [],
             description: "",
         })
-        alert("Activity created")
+        alert("Updated activity")
         history.push('/activities')
     }
-    //  console.log(input.countryID.length)
+    //  console.log(input.countryID)
     function handleDelete(el) {
         // console.log(el)
         setInput({
@@ -135,13 +154,14 @@ export default function CreateActivity() {
         handleDisable()
     }
     // console.log(input)
+    console.log(input.countryID.length)
     return (
         <div className={s.todo}>
 
             {/* <img className={s.image} src={image} alt="No se encontro la imagen" /> */}
             <div className={s.barra}>
                 <p className={s.app}>World-Scanner</p>
-                 <img className={s.img} src={img} alt="" />
+                <img className={s.img} src={img} alt="" />
                 <h1 className={s.titulo}>Create your activity in one or more countries</h1>
 
                 <Link to='/activities'><button className={s.btnactivities}>Activities</button></Link>
@@ -174,12 +194,12 @@ export default function CreateActivity() {
                     <div className={s.seasonycountry}>
                         Select season:
                         <select className={s.select} name="season" onChange={(e) => handleChange(e)}>
-                            <option value="null">-</option>
+                            <option value="null">{input.season}</option>
                             <option value="summer">summer</option>
                             <option value="autumn">autumn</option>
                             <option value="winter">winter</option>
                             <option value="spring">spring</option>
-                            
+
                         </select>
                         {errors.season && (<div className={s.season}>{errors.season}</div>)}
                     </div>
@@ -189,28 +209,41 @@ export default function CreateActivity() {
                         <select className={s.select} name="countryID" onChange={(e) => handleSelect(e)}>
                             <option value="null">-</option>
                             {
-                                countries?.map(c => (
+                                countries.length ? countries.map(c => (
                                     <option key={c.id} value={c.id}>{c.name}</option>
-                                ))
+                                )) : <div>no hay paises</div>
                             }</select>
-                            {errors.countryID && (<div className={s.countryID}>{errors.countryID}</div>)}
+                        {errors.countryID && (<div className={s.countryID}>{errors.countryID}</div>)}
                     </div>
                     <div>
-                        <textarea className={s.description} name="description" rows="4" cols="40" placeholder="Description..." onChange={(e) => handleChange(e)}></textarea>
+                        <textarea value={input.description} className={s.description} name="description" rows="4" cols="40" placeholder="Description..." onChange={(e) => handleChange(e)}></textarea>
                         {errors.description && (<div className={s.countryID}>{errors.description}</div>)}
                         {/* <label htmlFor="">Description:</label>
                 <input type="text" value={input.description} name= "description"/> */}
                     </div>
-                    <button id="btn" disabled={!activeButton} className={s.btnsubmit} type="submit">Create!</button>
+                    <button id="btn" disabled={!activeButton} className={s.btnsubmit} type="submit">Update data!</button>
                 </form>
                 <div className={s.nameflag}>
                     <p className={s.add}>Added countries</p>
                     <div className={s.boxnameflag}>
-                        {input.countryID?.map(el =>
-                            <div >
-                                <NameFlag key={el} id={el} onClose={() => handleDelete(el)} />
-                            </div>
-                        )}
+                        {
+                            input.countryID.length? input.countryID.map(el =>
+                                <div >
+                                    <NameFlag key={el} id={el} onClose={() => handleDelete(el)} />
+                                </div>
+                            ): <div>Nada</div>
+                            // input.countryID.length ? input.countryID.map(el =>
+                            //     <div >
+                            //         {/* <NameFlag key={el} id={el} onClose={() => handleDelete(el)} /> */}
+                            //     </div>
+                                
+                            // ) : 
+                            // activityselect[0].countries.map(el =>
+                            //     <div >
+                            //         <h3 className={s.name} >{el.name}</h3>  
+                            //         <img className={s.flag} src={el.flag_img} alt="no img" />
+                            //     </div>)
+                        }
                     </div>
 
 

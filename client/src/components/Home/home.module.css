@@ -7,10 +7,10 @@
     background-image: url("../../img/mundo.jpg");
     background-position: 00px 50px;
     background-repeat:no-repeat;
-    
     width: 100%;
-    min-height:1080px;
-    background-size: 100%;
+   
+    background-size: cover;
+    height:1080px;
 }
 
 .countriesall{

@@ -1,9 +1,13 @@
+
 const initialState = {
     countries: [],
     allCountries: [],
     countryDetail: [],
-    activities:[]
+    activities:[],
+    allactivities:[],
+    activSelect:[]
   };
+ console.log(initialState.activSelect)
   //Ordeno alfabeticamente
   const ordAlpha = (a , b) =>{
     if(a.name < b.name) return -1
@@ -33,7 +37,7 @@ const initialState = {
         };
       }
       case "GET_BY_NAME": {
-        
+        // console.log(action.payload)
         return {
           ...state,
           countries: action.payload,
@@ -90,6 +94,7 @@ const initialState = {
         return {
             ...state,
             activities: action.payload,
+            allactivities: action.payload
         }
       }
 
@@ -98,16 +103,31 @@ const initialState = {
             ...state
         }
     }
-
+    
+    case "UPDATE_ACTIV":{
+      return{
+          ...state
+      }
+  }
     case "DELETE_ACTIV_BY_NAME":{
         return{
             ...state
         }
     }
+    case "SELECTACTIV": {
+      const activ =  state.activities
+      // console.log(typeof action.payload)
+      // console.log(state.activities)
+      // console.log(state.allactivities)
+      return{
+        ...state,
+        activSelect: activ.filter(e=> e.id === action.payload)
+    }
+    }
+    // console.log(activitySelect)
       default:
         return state;
     }  
-    
 };
 
 export default rootReducer;

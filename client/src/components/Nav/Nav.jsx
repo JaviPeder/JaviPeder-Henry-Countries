@@ -8,7 +8,7 @@ import SearchActivity from "../SearchActivity/SearchActivity";
 import img from "../../img/Mundo_hecho_de_Banderas.gif"
 
 
-export default function NavBar() {
+export default function NavBar({setPage}) {
   // const countries = useSelector((state) => state.countries);
   const [sort, setSort] = useState("");
   const [region, setRegion] = useState("");
@@ -22,6 +22,7 @@ export default function NavBar() {
         setTimeout(() => {
           dispatch(orderCont(region));
         }, 200);
+        setPage(1)
       }
     }
     // eslint-disable-next-line
@@ -44,7 +45,7 @@ export default function NavBar() {
         <img className={s.img} src={img} alt="" />
       </Link>
       <div className={s.container}>
-        <SearchBar />
+        <SearchBar setPage={setPage}/>
         <SearchActivity />
         <div className={s.sort_filter}>
           <div className={s.sort}>

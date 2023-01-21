@@ -22,12 +22,11 @@ export function getCountry(id) {
        const res = await axios.get(
           `http://localhost:3001/countries?name=${name}`
         );
-        console.log(res.data)
         dispatch({ type: "GET_BY_NAME", payload: res.data });
         
     } catch (error) {
-      console.log(error.response.data);
-      // console.log(error);
+      dispatch({ type: "GET_BY_NAME", payload: error.response.data });
+      console.log(error);
     }
   };
 }
@@ -84,10 +83,11 @@ export function orderAlpha() {
         try {
           const res = await axios.delete(
             `http://localhost:3001/activities/`+name);
-            // dispatch({ type: "DELETE_ACTIV_BY_NAME", payload: res.data });
-            console.log(res)
+            dispatch({ type: "DELETE_ACTIV_BY_NAME", payload: res.data });
+            
           // dispatch(res.message);
       } catch (error) {
+// console.log(res.data.error)
         console.log(error);
       }
     };
@@ -104,3 +104,25 @@ export function orderAlpha() {
       }
     }
   }
+
+  export function updateActivity(id,payload){
+    return async (dispatch) => {
+        try {
+          const res = await axios.put(
+            `http://localhost:3001/activities/`+id,payload);
+            dispatch({ type: "UPDATE_ACTIV", payload: res.data });
+            
+          // dispatch(res.message);
+      } catch (error) {
+// console.log(res.data.error)
+        console.log(error);
+      }
+    };
+  }
+
+  export function selectActiv(id){
+    return  {
+      type: "SELECTACTIV",
+      payload: parseInt(id),
+    };
+  };

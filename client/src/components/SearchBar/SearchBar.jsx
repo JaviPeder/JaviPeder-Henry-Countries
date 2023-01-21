@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import s from "./searchbar.module.css";
 import { getCountries, getByName } from "../../actions";
 
-export default function SearchBar() {
+export default function SearchBar({setPage}) {
 
   const [input, setInput] = useState("");
 
@@ -13,10 +13,11 @@ export default function SearchBar() {
     dispatch(getCountries());
   };
 
-  console.log(input)
+  // console.log(input)
   const handlerSubmit = (e) => {
     e.preventDefault();
     if(!input) alert ('Por favor ingrese un país')
+    setPage(1)
     dispatch(getByName(input));
     setInput('');
   };

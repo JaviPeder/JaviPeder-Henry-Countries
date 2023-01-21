@@ -18,7 +18,6 @@ export default function CountryId(){
  // eslint-disable-next-line
       }, [id]);
 // mientras tenga id
-
 // console.log(country.activities)
     return (
         // <h1>hola</h1>

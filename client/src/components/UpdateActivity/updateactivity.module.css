@@ -279,14 +279,29 @@ width: 20px;
 .boxnameflag{
     display: flex;
     max-width: 1200px;
-    margin-left: 10px;
+    margin-left: 70px;
     align-items: flex-end;
     flex-wrap: wrap;
     justify-content: flex-start;
     flex-direction: row;
 }
 
+.name {
+    margin-bottom: 0px;
+    font-size: 25px;
+    color: rgb(60, 60, 139);
+    size-adjust: auto;
+    font-family: 'Noto Serif Thai', serif;
+}
 
+.flag {
+    max-width: 200px;
+    width: 200px;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
 /* .image{
     display: flex;
     margin-top: -500px;

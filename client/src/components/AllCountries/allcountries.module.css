@@ -19,6 +19,12 @@
     margin-left: 2px;
     margin-right: 2px;
 }
+.btn:disabled{
+    background-color: #8aa3c5;
+}
+.btn:disabled:hover{
+    background-color: #8aa3c5;
+}
 .btn:hover {
     background: #073672;
 }

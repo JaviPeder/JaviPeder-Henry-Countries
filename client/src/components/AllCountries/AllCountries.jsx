@@ -3,7 +3,8 @@ import Country from "../Country/Country.jsx";
 import { useSelector } from "react-redux";
 import s from "./allcountries.module.css"
 import Paginado from '../Paginado/Paginado.jsx'
-// import img from '../../img/error.png'
+import img from '../../img/error.png'
+import Nav from "../Nav/Nav.jsx";
 
 export default function AllCountries() {
 
@@ -11,7 +12,7 @@ export default function AllCountries() {
   const [currentPage, setCurrentPage] = useState(1);
   //  eslint-disable-next-line
   const [countriesPerPage, setcountriesPerPage] = useState(9);
-  
+
   //0      9
   //9 ---- 18
   const lastPosition = currentPage * countriesPerPage;
@@ -23,21 +24,24 @@ export default function AllCountries() {
   // 27-36          29-39            pag3
   // debo conseguir que la primera pagina tenga  9 paises y el resto 10
   //last p = 18
+  
+
   const paginado = (page) => {
-    setCurrentPage(page);
+      setCurrentPage(page);
   }
+// console.log(currentPage)
+//    console.log(countries.length)
   if (firstPosition > 1) {
     var currentCountries = countries.slice(firstPosition + currentPage - 2, lastPosition + currentPage - 1)
   } else {
     currentCountries = countries.slice(firstPosition, lastPosition)
   }
-  // console.log(countries.length)
-  // console.log(firstPosition)
-  // console.log(lastPosition)
-  // console.log(currentCountries.length)
-  
+  //para lograr el paginado con flechas debo saber cuantas paginas se estan renderizando- maxPag
+  let maxPag = Math.ceil(((countries.length - countriesPerPage) / (countriesPerPage + 1)) + 1)
+  // console.log(currentPage)
+
   function nextPage() {
-    if (currentPage === 26) {
+    if (currentPage === maxPag) {
       setCurrentPage(currentPage)
     } else {
       setCurrentPage(currentPage + 1)
@@ -54,35 +58,51 @@ export default function AllCountries() {
     setCurrentPage(1)
   }
   function lastPage() {
-    setCurrentPage(26)
+    setCurrentPage(maxPag)
   }
-  // console.log(currentCountries)
+  // console.log(countries.length)
   return (
     <div>
+       <Nav setPage={setCurrentPage}/>
       <Paginado
+        page={currentPage}
         countriesPerPage={countriesPerPage}
-        countries={countries.length}
+        countries={countries}
         paginado={paginado} />
       <div>
         <div className={s.nextprev}>
-          <button className={s.btn} onClick={() => firstPage()}>{'<<'}</button>
-          <button className={s.btn} onClick={() => prevPage()}>prev</button>
+          <button disabled={currentPage === 1? true: false} className={s.btn} onClick={() => firstPage()}>{'<<'}</button>
+          <button  className={s.btn} onClick={() => prevPage()}>prev</button>
+
           <button className={s.btn} onClick={() => nextPage()}>next</button>
-          <button className={s.btn} onClick={() => lastPage()}>{'>>'}</button>
+          <button disabled={currentPage === maxPag? true: false} className={s.btn} onClick={() => lastPage()}>{'>>'}</button>
         </div>
         {
-          currentCountries.length ? currentCountries.map((e) => (
-            <Country
-              id={e.id}
-              flag_img={e.flag_img}
-              name={e.name}
-              region={e.region}
-              key={e.id}
-              activities={e.activities}
-            />)) : <div className={s.fail}>
-            <h2 >Loading...</h2>
-            {/* <img className={s.failimg} src={img} alt="not found" /> */}
-          </div>}
+          // console.log(currentCountries)
+          // linea 80 Porque si hago el paginado y luego busco un pais no lo muestra
+          // countries.length === 1 ? (
+          //   <Country
+          //     id={countries[0].id}
+          //     flag_img={countries[0].flag_img}
+          //     name={countries[0].name}
+          //     region={countries[0].region}
+          //     key={countries[0].id}
+          //     activities={countries[0].activities}
+          //   />) :
+            (typeof currentCountries === 'object' ? currentCountries.map((e) => (
+              <Country
+                id={e.id}
+                flag_img={e.flag_img}
+                name={e.name}
+                region={e.region}
+                key={e.id}
+                activities={e.activities}
+              />)) : <div className={s.fail}>
+              <h2 >{countries}</h2>
+              <img className={s.failimg} src={img} alt="not found" />
+            </div>
+            )
+        }
       </div>
     </div>
   );

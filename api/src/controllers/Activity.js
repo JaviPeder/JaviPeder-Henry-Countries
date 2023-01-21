@@ -2,6 +2,7 @@ const { Country, Activity } = require("../db");
 
 const newActivity = async function (name, difficulty, duration, season, countryID, description) {
   //Busco la actividad por name para saber si existe
+  // console.log(countryID)
   if (!name || !difficulty || !duration || !season || !countryID || !description) {
     throw new Error('Debe completar todos los campos requeridos')
   }
@@ -17,6 +18,7 @@ const newActivity = async function (name, difficulty, duration, season, countryI
       id: countryID,
     },
   });
+  // console.log(countryMatch)
   if (countryMatch.length === 0) {
     throw new Error(`No se encuentra el país ${countryID} para agregar actividad`)
   }

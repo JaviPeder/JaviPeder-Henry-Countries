@@ -7,9 +7,10 @@ export default function landingPage() {
    
     return (
         <div className={s.container}>
-            <h1>Welcome!!!</h1>
+            
+            <div><p>Welcome to World-Scanner!!!</p></div>
             <Link to='/home'>
-                <button className={s.button}>Let's travel</button>
+                <button className={s.button}></button>
             </Link>
         </div>
     )

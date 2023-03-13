@@ -24,13 +24,13 @@ export default function AllCountries() {
   // 27-36          29-39            pag3
   // debo conseguir que la primera pagina tenga  9 paises y el resto 10
   //last p = 18
-  
+
 
   const paginado = (page) => {
-      setCurrentPage(page);
+    setCurrentPage(page);
   }
-// console.log(currentPage)
-//    console.log(countries.length)
+  // console.log(currentPage)
+  //    console.log(countries.length)
   if (firstPosition > 1) {
     var currentCountries = countries.slice(firstPosition + currentPage - 2, lastPosition + currentPage - 1)
   } else {
@@ -63,7 +63,7 @@ export default function AllCountries() {
   // console.log(countries.length)
   return (
     <div>
-       <Nav setPage={setCurrentPage}/>
+      <Nav setPage={setCurrentPage} />
       <Paginado
         page={currentPage}
         countriesPerPage={countriesPerPage}
@@ -71,11 +71,11 @@ export default function AllCountries() {
         paginado={paginado} />
       <div>
         <div className={s.nextprev}>
-          <button disabled={currentPage === 1? true: false} className={s.btn} onClick={() => firstPage()}>{'<<'}</button>
-          <button  className={s.btn} onClick={() => prevPage()}>prev</button>
+          <button disabled={currentPage === 1 ? true : false} className={s.btn} onClick={() => firstPage()}>{'<<'}</button>
+          <button className={s.btn} onClick={() => prevPage()}>prev</button>
 
           <button className={s.btn} onClick={() => nextPage()}>next</button>
-          <button disabled={currentPage === maxPag? true: false} className={s.btn} onClick={() => lastPage()}>{'>>'}</button>
+          <button disabled={currentPage === maxPag ? true : false} className={s.btn} onClick={() => lastPage()}>{'>>'}</button>
         </div>
         {
           // console.log(currentCountries)
@@ -89,19 +89,19 @@ export default function AllCountries() {
           //     key={countries[0].id}
           //     activities={countries[0].activities}
           //   />) :
-            (typeof currentCountries === 'object' ? currentCountries.map((e) => (
-              <Country
-                id={e.id}
-                flag_img={e.flag_img}
-                name={e.name}
-                region={e.region}
-                key={e.id}
-                activities={e.activities}
-              />)) : <div className={s.fail}>
-              <h2 >{countries}</h2>
-              <img className={s.failimg} src={img} alt="not found" />
-            </div>
-            )
+          (typeof currentCountries === 'object' ? currentCountries.map((e) => (
+            <Country
+              id={e.id}
+              flag_img={e.flag_img}
+              name={e.name}
+              region={e.region}
+              key={e.id}
+              activities={e.activities}
+            />)) : <div className={s.fail}>
+            <h2 >{countries}</h2>
+            <img className={s.failimg} src={img} alt="not found" />
+          </div>
+          )
         }
       </div>
     </div>

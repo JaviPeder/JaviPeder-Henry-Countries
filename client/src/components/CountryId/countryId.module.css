@@ -1,8 +1,8 @@
-.todo{
+.todo {
     background-image: url("../../img/mundo.jpg");
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     width: 100%;
-    min-height:1080px;
+    min-height: 1080px;
     background-size: 100%;
 }
 
@@ -18,7 +18,8 @@
     /* padding: 20px; */
     justify-content: space-evenly;
 }
-.barra{
+
+.barra {
     margin: 0px;
     text-decoration: none;
     background-color: #3BB2BF;
@@ -30,7 +31,8 @@
     align-content: center;
     flex-direction: row;
 }
-.logo{
+
+.logo {
     text-decoration: none;
     display: flex;
     /* justify-content: space-around; */
@@ -48,16 +50,19 @@
     /* font-family: 'Space Mono', monospace; */
     /* font-family: 'Squada One', cursive; */
 }
-.logo p{
+
+.logo p {
     padding-top: 20px;
-        /* margin: 15px; */
-        margin-left: 80px;
+    /* margin: 15px; */
+    margin-left: 80px;
 }
-.img{
+
+.img {
     padding-top: 40px;
     width: 70px;
     height: 70px;
 }
+
 .btnhome {
     color: #4895D9;
     font-family: 'Roboto Slab', serif;
@@ -72,7 +77,8 @@
     border-radius: 5px;
     /* margin-top: -10px; */
 }
-.btnhome:hover{
+
+.btnhome:hover {
     background-color: #9d9b9b;
     color: white;
     transition: 0.3s;
@@ -94,7 +100,7 @@
     height: auto;
 }
 
-.description{
+.description {
     display: flex;
     font-size: 20px;
     font-family: 'Roboto Slab', serif;
@@ -103,13 +109,15 @@
 
     /* margin-left: 350px; */
 }
-.description hr{
-   border: 0;
-border-top: 2px solid #4AB0D9; 
-border-bottom: 2px solid #4895D9;
-height:0;
+
+.description hr {
+    border: 0;
+    border-top: 2px solid #4AB0D9;
+    border-bottom: 2px solid #4895D9;
+    height: 0;
 }
-.activitiestitle{
+
+.activitiestitle {
     margin-top: -10px;
     font-size: 25px;
     color: #4895D9;
@@ -117,7 +125,8 @@ height:0;
     font-weight: bold;
     margin-bottom: 15px;
 }
-.activities{
+
+.activities {
     background-color: #4AB0D9;
     display: flex;
     justify-content: space-evenly;
@@ -129,4 +138,3 @@ height:0;
     color: #e2e1e1;
     margin-bottom: 50px;
 }
-

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import s from "./nav.module.css";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { getCountries, orderAlpha, orderCont, orderAlphaRev, orderPop, orderPopRev } from "../../actions/index.js";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import SearchActivity from "../SearchActivity/SearchActivity";
 import img from "../../img/Mundo_hecho_de_Banderas.gif"
 
 
-export default function NavBar({setPage}) {
+export default function NavBar({ setPage }) {
   // const countries = useSelector((state) => state.countries);
   const [sort, setSort] = useState("");
   const [region, setRegion] = useState("");
@@ -45,7 +45,7 @@ export default function NavBar({setPage}) {
         <img className={s.img} src={img} alt="" />
       </Link>
       <div className={s.container}>
-        <SearchBar setPage={setPage}/>
+        <SearchBar setPage={setPage} />
         <SearchActivity />
         <div className={s.sort_filter}>
           <div className={s.sort}>
@@ -81,8 +81,3 @@ export default function NavBar({setPage}) {
     </div>
   );
 };
-
-
-
-
-

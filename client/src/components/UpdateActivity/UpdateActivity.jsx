@@ -13,10 +13,10 @@ import img from "../../img/globe-24.webp"
 
 function validate(input) {
     let errors = {};
-    let regexDescription = /^.{1,250}$/; 
+    let regexDescription = /^.{1,250}$/;
     let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
 
-    if(!regexName.test(input.name)){
+    if (!regexName.test(input.name)) {
         errors.name = "Name does not accept numbers"
     }
     if (!input.name.trim()) {
@@ -27,20 +27,20 @@ function validate(input) {
         errors.difficulty = "Value between 1 and 5 is required"
     } else if (!input.duration || input.duration === "") {
         errors.duration = "Duration is required"
-    } 
-    else if(!input.season || input.season === 'null'){
+    }
+    else if (!input.season || input.season === 'null') {
         errors.season = "Season is required"
     }
-    else if(!input.countryID.length){
+    else if (!input.countryID.length) {
         errors.countryID = "Country is required"
     }
-    else if(!input.description){
+    else if (!input.description) {
         errors.description = "Description is required"
     }
-    else if(!regexDescription.test(input.description)){
+    else if (!regexDescription.test(input.description)) {
         errors.description = "Description exceeds 250 characters"
     }
-    
+
     // console.log(errors)
     return errors
 }
@@ -49,29 +49,30 @@ const iconOk = <FontAwesomeIcon className={s.ok_icon} icon={faSquareCheck} />
 const iconEarth = <FontAwesomeIcon className={s.earth_icon} icon={faEarthAmericas} />
 
 export default function UpdateActivity() {
-    const {id} = useParams()
+    const { id } = useParams()
     const dispatch = useDispatch();
     const countries = useSelector((state) => state.countries);
     const history = useHistory();
     const [errors, setErrors] = useState({})
     const [activeButton, setActiveButton] = useState(false)
     const activities = useSelector((state) => state.allactivities);
-    const act = activities.filter(e=>e.id === parseInt(id))
+    const act = activities.filter(e => e.id === parseInt(id))
     console.log(act)
     // console.log(typeof parseInt(id))
     console.log(id)
     // 
     // console.log(activities)
     // console.log(countries)
-    
+
     // console.log(activities)
     // console.log(activityselect[0].countries.map(e=>e.id))
     useEffect(() => {
         dispatch(getActivities());
     }, [dispatch]);
     useEffect(() => {
-            dispatch(selectActiv(id));
-        }, [id]);
+        dispatch(selectActiv(id));
+        // eslint-disable-next-line 
+    }, [id]);
     useEffect(() => {
         dispatch(getCountries());
     }, [dispatch]);
@@ -81,15 +82,15 @@ export default function UpdateActivity() {
     console.log(activityselect)
     const [input, setInput] = useState(
         {
-            name: activityselect.length? activityselect[0].name:"",
-            difficulty: activityselect.length? activityselect[0].difficulty:"",
-            duration: activityselect.length? activityselect[0].duration:"",
-            description: activityselect.length? activityselect[0].description:"",
-            season: activityselect.length? activityselect[0].season:"",
-            countryID: activityselect.length? activityselect[0].countries.map(e=>e.id):[]
+            name: activityselect.length ? activityselect[0].name : "",
+            difficulty: activityselect.length ? activityselect[0].difficulty : "",
+            duration: activityselect.length ? activityselect[0].duration : "",
+            description: activityselect.length ? activityselect[0].description : "",
+            season: activityselect.length ? activityselect[0].season : "",
+            countryID: activityselect.length ? activityselect[0].countries.map(e => e.id) : []
         }
     )
-   
+
     function handleChange(e) {
         setInput({
             ...input,
@@ -128,7 +129,7 @@ export default function UpdateActivity() {
     function handleSubmit(e) {
         e.preventDefault();
         // console.log(input)
-        dispatch(updateActivity(id,input))
+        dispatch(updateActivity(id, input))
         setInput({
             name: "",
             difficulty: "",
@@ -227,16 +228,16 @@ export default function UpdateActivity() {
                     <p className={s.add}>Added countries</p>
                     <div className={s.boxnameflag}>
                         {
-                            input.countryID.length? input.countryID.map(el =>
+                            input.countryID.length ? input.countryID.map(el =>
                                 <div >
                                     <NameFlag key={el} id={el} onClose={() => handleDelete(el)} />
                                 </div>
-                            ): <div>Nada</div>
+                            ) : <div>Nada</div>
                             // input.countryID.length ? input.countryID.map(el =>
                             //     <div >
                             //         {/* <NameFlag key={el} id={el} onClose={() => handleDelete(el)} /> */}
                             //     </div>
-                                
+
                             // ) : 
                             // activityselect[0].countries.map(el =>
                             //     <div >

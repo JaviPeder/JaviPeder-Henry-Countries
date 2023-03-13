@@ -13,11 +13,14 @@
     margin-left: 90px;
     font-family: 'Playfair Display', serif;
 }
-.img{
+
+.img {
     height: 50px;
     margin-left: -60px;
 }
-.app{text-decoration: none;
+
+.app {
+    text-decoration: none;
     display: flex;
     width: 380px;
     color: white;
@@ -27,35 +30,39 @@
     font-family: 'Cinzel', serif;
     justify-content: center;
 }
-.barra{
+
+.barra {
     text-decoration: none;
     box-sizing: 100%;
     /* size: 100%; */
-    background-color: #3bb2bfb1;;
+    background-color: #3bb2bfb1;
+    ;
     width: 100%;
     display: inline-flex;
     align-items: center;
 }
-.todo{
-    /* display: inline; */
+
+.todo {
     width: 100%;
-    height: 1280px;
+    height: 1100px;
     align-items: center;
     align-content: flex-start;
     background-size: 100%;
     background-image: url("../../img/fondoactividades4.png");
     /* background-attachment: fixed; */
-background-repeat: no-repeat;
+    background-repeat: no-repeat;
 
     /* font-family: 'Playfair Display', serif; */
     /* font-style: bold; */
 
 }
-.cajaform{
+
+.cajaform {
     align-items: flex-end;
-    
+
 }
-.form{
+
+.form {
     display: flexbox;
     border-radius: 15px;
     padding: 30px;
@@ -81,12 +88,14 @@ background-repeat: no-repeat;
     border-radius: 5px;
     /* margin-top: -10px; */
 }
-.btnhome:hover{
+
+.btnhome:hover {
     background-color: #9d9b9b;
     color: white;
     transition: 0.3s;
     border: solid 1px white;
 }
+
 .btnactivities {
     color: #4895D9;
     font-family: 'Roboto Slab', serif;
@@ -100,14 +109,15 @@ background-repeat: no-repeat;
     border-radius: 5px;
     box-shadow: 2px 2px rgba(130, 130, 130, 0.68);
 }
-.btnactivities:hover{
+
+.btnactivities:hover {
     background-color: #9d9b9b;
     color: white;
     transition: 0.3s;
     border: solid 1px white;
 }
 
-.seasonycountry{
+.seasonycountry {
     font-family: 'Roboto Slab', serif;
     font-weight: bold;
     display: inline-block;
@@ -116,28 +126,31 @@ background-repeat: no-repeat;
     padding: 10px;
     margin-top: 30px;
 }
-.select{
-    
+
+.select {
+
     font-family: 'Roboto Slab', serif;
     /* font-weight: bold; */
     font-size: 18px;
     margin-left: 10px;
-    background-color:#D9D9D9 ;
+    background-color: #D9D9D9;
     border-radius: 5px;
-     border: 3px solid transparent;
-}
-.select:focus{
-  outline: none;
-border: solid 2px #4895D9;  
+    border: 3px solid transparent;
 }
 
-.allinput{
+.select:focus {
+    outline: none;
+    border: solid 2px #4895D9;
+}
+
+.allinput {
     display: flex;
     position: relative;
     margin-left: -40px;
-   margin-bottom: 50px;
+    margin-bottom: 50px;
 }
-.input{
+
+.input {
     /* appearance:none; */
     display: flex;
     position: absolute;
@@ -151,59 +164,68 @@ border: solid 2px #4895D9;
     transition: 0.5s ease all;
     /* border: 3px solid transparent; */
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
-.input:focus{
+
+.input:focus {
     outline: none;
     border-bottom: solid 2px #4895D9;
     /* border-bottom: solid 2px #D9D9D9; */
 }
+
 /* .input:active{
     border: none;
 } */
-.errorname{
+.errorname {
     color: rgb(196, 19, 19);
     margin-top: 28px;
     margin-right: 45px;
     font-weight: bold;
 }
-.errorduration{
+
+.errorduration {
     color: rgb(196, 19, 19);
     margin-top: 28px;
     margin-left: 100px;
     font-weight: bold;
 }
-.fail_iconduration{
+
+.fail_iconduration {
     color: rgb(196, 19, 19);
     margin-top: 25px;
 }
-.fail_icon{
+
+.fail_icon {
     display: flex;
-color:rgb(196, 19, 19);
-position: absolute;
-height: 20px;
-width: 20px;
+    color: rgb(196, 19, 19);
+    position: absolute;
+    height: 20px;
+    width: 20px;
 }
-.ok_icon{
-color: rgb(9, 137, 9);
-margin-left: 220px;
-height: 20px;
-width: 20px;
+
+.ok_icon {
+    color: rgb(9, 137, 9);
+    margin-left: 220px;
+    height: 20px;
+    width: 20px;
 
 }
-.season{
-    color: rgb(196, 19, 19);
-    font-weight: bold;
-}
-.countryID{
+
+.season {
     color: rgb(196, 19, 19);
     font-weight: bold;
 }
 
-.inputcont{
+.countryID {
+    color: rgb(196, 19, 19);
+    font-weight: bold;
+}
+
+.inputcont {
     position: relative;
     /* padding-left: -20px; */
     margin: 10px;
@@ -215,51 +237,56 @@ width: 20px;
     transition: 0.5s ease all;
 }
 
-.btnsubmit{
+.btnsubmit {
     font-family: 'Roboto Slab', serif;
     font-weight: bold;
     color: white;
     background-color: #4895D9;
     border: none;
-        display: inline flex;
-        height: 40px; 
-        width: 200PX;
-        font-size: 20px;
-        margin-top: 20px;
-        border-radius: 5px;
-        margin-left: 400px;
-        box-shadow: 2px 2px rgba(130, 130, 130, 0.68);
+    display: inline flex;
+    height: 40px;
+    width: 200PX;
+    font-size: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    margin-left: 400px;
+    box-shadow: 2px 2px rgba(130, 130, 130, 0.68);
 }
-.btnsubmit:hover{
-    background-color: #3BB2BF;;
+
+.btnsubmit:hover {
+    background-color: #3BB2BF;
+    ;
     box-shadow: 0px 0px 2px 1px #6aaae284;
     color: #f2e605;
 }
-.btnsubmit:disabled{
+
+.btnsubmit:disabled {
     background-color: #9d9b9b;
 }
-.btnsubmit:disabled:hover{
+
+.btnsubmit:disabled:hover {
     background-color: #9d9b9b;
     color: rgb(96, 25, 25);
 }
 
 
-.description{
+.description {
     margin-top: 20px;
     width: 900px;
     background-color: #D9D9D9;
     border-radius: 5px;
     border: 3px solid transparent;
 }
-.description:focus{
+
+.description:focus {
     outline: none;
     border: solid 2px #4895D9;
 }
 
 
-.add{
+.add {
     /* background-color: #4895D9; */
-    background-image: linear-gradient(to left,#cadfe0cd ,#4895d9ca);
+    background-image: linear-gradient(to left, #cadfe0cd, #4895d9ca);
     color: white;
     border-radius: 5px;
     max-width: 900px;
@@ -270,13 +297,14 @@ width: 20px;
     margin-left: 70px;
     width: auto;
 }
-.nameflag{
+
+.nameflag {
     margin-left: 30px;
     display: inline-block;
     max-width: 1800px;
 }
 
-.boxnameflag{
+.boxnameflag {
     display: flex;
     max-width: 1200px;
     margin-left: 10px;

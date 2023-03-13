@@ -1,7 +1,7 @@
-import React, { useState ,useEffect } from "react";
-import { useDispatch, useSelector  } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import s from "./searchactivity.module.css";
-import { getCountries, FilterByActiv, getActivities} from "../../actions";
+import { getCountries, FilterByActiv, getActivities } from "../../actions";
 
 export default function SearchActivity() {
   const activities = useSelector((state) => state.activities);
@@ -11,9 +11,9 @@ export default function SearchActivity() {
     dispatch(getActivities());
   }, [dispatch]);
 
-// console.log(activity)
-// refrescar la pagina
-const activityHandler = (e) => {
+  // console.log(activity)
+  // refrescar la pagina
+  const activityHandler = (e) => {
     e.preventDefault();
     setActivity(e.target.value);
   };
@@ -30,14 +30,14 @@ const activityHandler = (e) => {
   return (
     <div className={s.contenedor}>
       {/* <label>Search by activity</label> */}
-      <input autoComplete='off' className={s.input} placeholder="Search your activity" value={activity} onChange={activityHandler} list="activities"  autocomplete="off" />
-        <datalist id="activities">
+      <input autoComplete='off' className={s.input} placeholder="Search your activity" value={activity} onChange={activityHandler} list="activities" autocomplete="off" />
+      <datalist id="activities">
         {
           activities?.map(a => <option key={a.id}>{a.name}</option>)
         }
-        </datalist>
-      <button type="submit" className={s.btn} onClick={searchActHandler}>Search</button> 
-  </div>
+      </datalist>
+      <button type="submit" className={s.btn} onClick={searchActHandler}>Search</button>
+    </div>
   );
 };
 

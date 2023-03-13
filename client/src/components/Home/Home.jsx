@@ -15,7 +15,6 @@ export default function Home() {
 
   return (
     <div className={s.homeall}>
-     
       <div className={s.countriesall}>
         <AllCountries />
       </div>

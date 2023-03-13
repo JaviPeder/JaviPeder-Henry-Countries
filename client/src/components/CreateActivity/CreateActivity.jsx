@@ -14,10 +14,10 @@ import img from "../../img/globe-24.webp"
 
 function validate(input) {
     let errors = {};
-    let regexDescription = /^.{1,250}$/; 
+    let regexDescription = /^.{1,250}$/;
     let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
 
-    if(!regexName.test(input.name)){
+    if (!regexName.test(input.name)) {
         errors.name = "Name does not accept numbers"
     }
     if (!input.name.trim()) {
@@ -28,20 +28,20 @@ function validate(input) {
         errors.difficulty = "Value between 1 and 5 is required"
     } else if (!input.duration || input.duration === "") {
         errors.duration = "Duration is required"
-    } 
-    else if(!input.season || input.season === 'null'){
+    }
+    else if (!input.season || input.season === 'null') {
         errors.season = "Season is required"
     }
-    else if(!input.countryID.length){
+    else if (!input.countryID.length) {
         errors.countryID = "Country is required"
     }
-    else if(!input.description){
+    else if (!input.description) {
         errors.description = "Description is required"
     }
-    else if(!regexDescription.test(input.description)){
+    else if (!regexDescription.test(input.description)) {
         errors.description = "Description exceeds 250 characters"
     }
-    
+
     // console.log(errors)
     return errors
 }
@@ -85,22 +85,22 @@ export default function CreateActivity() {
     }
 
     function handleSelect(e) {
-    
-        if(e.target.value !=='null' && !input.countryID.includes(e.target.value)){
-        setInput({
-            ...input,
-            [e.target.name]: [...input.countryID, e.target.value]
-        })
-        setErrors(validate({
-            ...input,
-            [e.target.name]: e.target.value
-        }))
-        handleDisable()
+
+        if (e.target.value !== 'null' && !input.countryID.includes(e.target.value)) {
+            setInput({
+                ...input,
+                [e.target.name]: [...input.countryID, e.target.value]
+            })
+            setErrors(validate({
+                ...input,
+                [e.target.name]: e.target.value
+            }))
+            handleDisable()
+        }
     }
-}
 
     function handleDisable() {
-        if (Object.keys(errors).length !== 0 ) {
+        if (Object.keys(errors).length !== 0) {
             setActiveButton(false)
         } else { setActiveButton(true) }
     }
@@ -141,7 +141,7 @@ export default function CreateActivity() {
             {/* <img className={s.image} src={image} alt="No se encontro la imagen" /> */}
             <div className={s.barra}>
                 <p className={s.app}>World-Scanner</p>
-                 <img className={s.img} src={img} alt="" />
+                <img className={s.img} src={img} alt="" />
                 <h1 className={s.titulo}>Create your activity in one or more countries</h1>
 
                 <Link to='/activities'><button className={s.btnactivities}>Activities</button></Link>
@@ -179,7 +179,7 @@ export default function CreateActivity() {
                             <option value="autumn">autumn</option>
                             <option value="winter">winter</option>
                             <option value="spring">spring</option>
-                            
+
                         </select>
                         {errors.season && (<div className={s.season}>{errors.season}</div>)}
                     </div>
@@ -193,7 +193,7 @@ export default function CreateActivity() {
                                     <option key={c.id} value={c.id}>{c.name}</option>
                                 ))
                             }</select>
-                            {errors.countryID && (<div className={s.countryID}>{errors.countryID}</div>)}
+                        {errors.countryID && (<div className={s.countryID}>{errors.countryID}</div>)}
                     </div>
                     <div>
                         <textarea className={s.description} name="description" rows="4" cols="40" placeholder="Description..." onChange={(e) => handleChange(e)}></textarea>

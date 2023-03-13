@@ -1,4 +1,4 @@
-.container {    
+.container {
     text-decoration: none;
     display: inline-block;
     align-items: center;
@@ -13,8 +13,9 @@
     transition: 0.3s;
     /* border: 1px solid red; */
 }
-.container:hover{
-    box-shadow:4px 4px 4px 4px #5e83a4;
+
+.container:hover {
+    box-shadow: 4px 4px 4px 4px #5e83a4;
     transform: scale(1.03);
     /* border: 4px solid rgb(108, 165, 165);  */
 }

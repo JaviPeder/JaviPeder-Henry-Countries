@@ -2,7 +2,7 @@ import React from "react";
 import style from "./activities.module.css"
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getActivities, deleteActivity, selectActiv} from "../../actions/index.js";
+import { getActivities, deleteActivity, selectActiv } from "../../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons'
@@ -31,7 +31,7 @@ export default function Activity() {
         dispatch(getActivities());
     }, [dispatch]);
 
-    function setActivity(e){
+    function setActivity(e) {
         console.log(typeof e.target.id)
         dispatch(selectActiv(e.target.id))
     }
@@ -42,16 +42,16 @@ export default function Activity() {
             <div className={style.barra}>
                 <div className={style.title}>
                     <p className={style.app}>World-Scanner</p>
-                 <img className={style.img} src={img} alt="" />
-                <h2 className={style.title}>Active your life!!!</h2>
+                    <img className={style.img} src={img} alt="" />
+                    <h2 className={style.title}>Active your life!!!</h2>
                 </div>
-                
+
                 <Link to="/activities/createActivity" ><button className={style.btn_activity}>Create your activity !!!</button></Link>
                 <Link to="/home"><button className={style.btn_home}>{iconEarth}  Back to home</button></Link>
             </div>
 
             <div className={style.allConteiners}>
-                    <div className={style.selectactivity} >Select activity</div>
+                <div className={style.selectactivity} >Select activity</div>
                 {
                     activities ? activities.map((activ) => (
                         <details className={style.details} key={activ.id}>
@@ -92,12 +92,12 @@ export default function Activity() {
                                         </div>)}
                                 </div>
                                 <div className={style.buttons}>
-                                   <div className={style.btn}>
-                                    <button name={activ.name} onClick={(e) => handleDelete(e)} className={style.btn_delete} > Remove activity</button>
-                                </div>
-                                <div >
-                                    <Link className={style.btn} to={`/activities/${activ.id}`} ><button className={style.btnupdate} onClick= {(e)=>setActivity(e)} id={activ.id}>Update activity</button></Link>
-                                </div> 
+                                    <div className={style.btn}>
+                                        <button name={activ.name} onClick={(e) => handleDelete(e)} className={style.btn_delete} > Remove activity</button>
+                                    </div>
+                                    <div >
+                                        <Link className={style.btn} to={`/activities/${activ.id}`} ><button className={style.btnupdate} onClick={(e) => setActivity(e)} id={activ.id}>Update activity</button></Link>
+                                    </div>
                                 </div>
                             </div>
 

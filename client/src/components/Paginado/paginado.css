@@ -35,3 +35,15 @@
 /* .paginado .active{
     background: #724207;
  } */
+
+ .paginado .inactive {
+    display: block;
+    padding: 10px 10px;
+    color: white;
+    background: #99adc6;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.2s;
+    width: 15px;
+    margin-left: 5px;
+ }
